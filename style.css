@@ -1,0 +1,199 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #000; /* Black background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative; /* Position for absolute elements */
+}
+
+.container {
+    text-align: center;
+    position: relative; /* Relative positioning for child elements */
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #fff;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin: 20px auto;
+    width: 320px;
+}
+
+.cell {
+    width: 100px;
+    height: 100px;
+    background-color: #ff4500; /* Neon orange background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+    font-weight: bold; /* Bold X and O */
+    cursor: pointer;
+    border-radius: 10px;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    box-shadow: 0 0 15px rgba(255, 69, 0, 0.6), 0 0 30px rgba(255, 69, 0, 0.4); /* Glowing effect */
+    border: none;
+}
+
+.cell:hover {
+    background-color: #ff6347; /* Slightly brighter neon orange when hovered */
+}
+
+.cell:active {
+    transform: scale(1.1); /* Pop effect when clicked */
+}
+
+.cell.playerX {
+    color: #00ff00; /* Neon green for X */
+}
+
+.cell.playerO {
+    color: #00ffff; /* Neon cyan for O */
+}
+
+.status {
+    margin-top: 20px;
+    font-size: 1.5rem;
+    color: #fff; /* White text for status */
+}
+
+button {
+    background-color: #ff4500; /* Neon orange buttons */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 0 10px rgba(255, 69, 0, 0.7);
+}
+
+button:hover {
+    background-color: #ff6347;
+}
+
+/* Add these styles for the input form */
+.player-names {
+    margin-bottom: 20px;
+}
+
+.player-names input {
+    padding: 10px;
+    font-size: 1rem;
+    margin: 5px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    width: 40%;
+}
+
+#startGame {
+    background-color: #ff4500;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+#startGame:hover {
+    background-color: #ff6347;
+}
+
+/* Popup Styles */
+.popup {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Black overlay */
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.winner-name {
+    font-size: 2.5rem; /* Larger font for winner's name */
+    font-weight: bold; /* Bold text */
+    color: #ff4500; /* Neon orange color */
+    margin-bottom: 20px; /* Space below the winner's name */
+    animation: pop 0.5s ease forwards; /* Pop animation */
+}
+
+/* Keyframes for pop animation */
+@keyframes pop {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+#newGameButton {
+    background-color: #ff4500; /* Neon orange for New Game button */
+}
+
+#newGameButton:hover {
+    background-color: #ff6347;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+    .board {
+        width: 90%;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .cell {
+        width: 100%;
+        height: 100px;
+        font-size: 2rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .status {
+        font-size: 1.2rem;
+    }
+
+    button {
+        width: 80%;
+        padding: 12px;
+    }
+}
